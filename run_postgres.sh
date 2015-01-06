@@ -6,4 +6,4 @@
 # If you omit that part, the command will be run as root.
 
 # Read more here: https://github.com/phusion/baseimage-docker#adding-additional-daemons
-exec /sbin/setuser postgres /usr/lib/postgresql/9.3/bin/postgres -D /usr/local/pgsql/data
+exec /sbin/setuser postgres /etc/postgresql/9.4/bin/postgres
