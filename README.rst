@@ -1,7 +1,7 @@
-sd-postgres
+Docker postgresl
 ===========
 
-A PostgreSQL database Dockerfile compatible with the `spin-docker PaaS <https://github.com/atbaker/spin-docker>`_.
+A PostgreSQL database Dockerfile based on phusion/baseimage.
 
 Quickstart
 ----------
@@ -10,37 +10,38 @@ This image is available as a trusted build on the docker index. The easiest way 
 
 .. code-block:: bash
 
-    $ docker pull atbaker/sd-postgres
+    $ docker pull swcc/docker-postgresql
 
 Alternatively, you can clone this repository and build the image yourself:
 
 .. code-block:: bash
 
-    $ docker build -t=sd-postgres .
+    $ docker build -t docker-postgresql .
 
 Using this image
 ----------------
 
-This image is very insecure! It uses `Phusion's baseimage-docker <https://github.com/phusion/baseimage-docker>`_ and its insecure key for SSH authentication. The Postgres authentication settings are similarly insecure. **Do not use this image in production without modification.**
-
-Once you have started a container from this image, you can access it via SSH:
+Launch a container with this image (bind postgres port anywhere you want _e.g. 49999_):
 
 .. code-block:: bash
     
-    # Use your container's host and port
-    $ ssh -i insecure_key root@127.0.0.1 -p 49153
-    $ su postgres -c 'psql'
+    $ docker run -p 127.0.0.1:49999:5432 swcc/docker-postgresql
+
+Once you have started a container from this image, you can access it via:
+
+.. code-block:: bash
+    
+    # Use your container's name or id
+    $ docker exec -ti <container-name-or-id> su postgres -c 'psql'
 
 Or can connect to the PostgreSQL database directly if you have the PostgreSQL client installed:
 
 .. code-block:: bash
 
     # Use your container's host and port
-    $ psql -U postgres -h 127.0.0.1 -p 49154
+    $ psql -U postgres -h 127.0.0.1 -p 49999
 
 Learn more
 ----------
-
-Learn more about this image and how to use it in the spin-docker documentation: http://spin-docker.readthedocs.org/
 
 Learn more about Dockerfiles and how to build them in the Docker documentation: http://docs.docker.io/en/latest/reference/builder/
