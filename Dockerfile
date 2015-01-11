@@ -1,4 +1,4 @@
-# dockerfile for PostgreSQL 9.4
+# dockerfile for PostgreSQL 9.1
 # https://github.com/swcc/docker-postgresql | http://www.postgresql.org/
 # Use phusion/baseimage as base image
 FROM phusion/baseimage:latest
@@ -13,7 +13,7 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' | tee 
 ADD ACCC4CF8.asc /tmp/ACCC4CF8.asc
 RUN apt-key add /tmp/ACCC4CF8.asc
 RUN apt-get update
-RUN apt-get install -y postgresql-9.4
+RUN apt-get install -y postgresql-9.1
 
 # And add ``listen_addresses`` to ``/usr/local/pgsql/data/postgresql.conf``
 # RUN echo "listen_addresses='*'" >> /usr/local/pgsql/data/postgresql.conf
