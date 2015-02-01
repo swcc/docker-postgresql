@@ -1,7 +1,10 @@
 Docker postgresl
 ===========
 
-[![Docker Hub](https://img.shields.io/badge/docker-swcc%2Fdocker--postgresql-blue.svg?style=flat)](https://registry.hub.docker.com/u/swcc/docker-postgresql/)
+|DockerHub|_
+
+.. |DockerHub| image:: https://img.shields.io/badge/docker-swcc%2Fdocker--postgresql-blue.svg
+.. _DockerHub: https://registry.hub.docker.com/u/swcc/docker-postgresql/
 
 A PostgreSQL database Dockerfile based on phusion/baseimage.
 
