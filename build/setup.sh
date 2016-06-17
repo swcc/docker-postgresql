@@ -4,6 +4,7 @@
 if [ ! -f /var/lib/postgresql/9.4/main/PG_VERSION ] && [ "$DATABASE_NAME" ] && [ "$DATABASE_USER" ] && [ "$DATABASE_PASSWORD" ]
 then
     # Create postgres data directory
+    rm -rf   /var/lib/postgresql/9.4/main
     mkdir -p /var/lib/postgresql/9.4/main
     chown -R postgres:postgres /var/lib/postgresql/
     /sbin/setuser postgres /usr/lib/postgresql/9.4/bin/initdb /var/lib/postgresql/9.4/main/

@@ -12,15 +12,14 @@ RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # Install postgres
 RUN locale-gen en_US.UTF-8
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ precise-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
-ADD ACCC4CF8.asc /tmp/ACCC4CF8.asc
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
+RUN curl https://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc -o /tmp/ACCC4CF8.asc
 RUN apt-key add /tmp/ACCC4CF8.asc
 RUN apt-get update
-RUN apt-get install -y postgresql-9.4 postgresql-contrib
+RUN apt-get install -y postgresql-9.4 postgresql-contrib-9.4
 
 # Listen on all interface
-RUN sed "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.4/main/postgresql.conf > /tmp/postgresql.conf
-RUN mv /tmp/postgresql.conf /etc/postgresql/9.4/main/postgresql.conf
+RUN sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.4/main/postgresql.conf
 # Give access to outside world with password auth
 RUN echo "host    all             all             172.17.0.0/16           md5" >> /etc/postgresql/9.4/main/pg_hba.conf
 
