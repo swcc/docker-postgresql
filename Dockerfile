@@ -1,4 +1,4 @@
-# dockerfile for PostgreSQL 9.5
+# dockerfile for PostgreSQL 9.2
 # https://github.com/swcc/docker-postgresql | http://www.postgresql.org/
 # Use phusion/baseimage as base image
 FROM phusion/baseimage:latest
@@ -16,12 +16,12 @@ RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' | tee /
 RUN curl https://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc -o /tmp/ACCC4CF8.asc
 RUN apt-key add /tmp/ACCC4CF8.asc
 RUN apt-get update
-RUN apt-get install -y postgresql-9.5 postgresql-contrib-9.5
+RUN apt-get install -y postgresql-9.2 postgresql-contrib-9.2
 
 # Listen on all interface
-RUN sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.5/main/postgresql.conf
+RUN sed -i "s/#listen_addresses = 'localhost'/listen_addresses = '*'/" /etc/postgresql/9.2/main/postgresql.conf
 # Give access to outside world with password auth
-RUN echo "host    all             all             172.17.0.0/16           md5" >> /etc/postgresql/9.5/main/pg_hba.conf
+RUN echo "host    all             all             172.17.0.0/16           md5" >> /etc/postgresql/9.2/main/pg_hba.conf
 
 
 # Add Postgres to runit
