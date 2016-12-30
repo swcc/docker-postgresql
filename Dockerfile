@@ -12,7 +12,7 @@ RUN rm -rf /etc/service/sshd /etc/my_init.d/00_regen_ssh_host_keys.sh
 
 # Install postgres
 RUN locale-gen en_US.UTF-8
-RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
+RUN echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' | tee /etc/apt/sources.list.d/pgdg.list
 RUN curl https://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc -o /tmp/ACCC4CF8.asc
 RUN apt-key add /tmp/ACCC4CF8.asc
 RUN apt-get update
